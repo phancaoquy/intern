@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('attribute_values', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('atr_id')->constrained('attributes')->cascadeOnDelete();
+            $table->string('atr_value');
             $table->timestamps();
         });
     }

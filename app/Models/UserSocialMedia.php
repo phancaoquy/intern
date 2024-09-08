@@ -13,6 +13,11 @@ class UserSocialMedia extends Model
         'social_media_id',
         'link',
     ];
-
+    protected $table = 'user_social_medias';
     public $timestamps = true;
+
+    public function users()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

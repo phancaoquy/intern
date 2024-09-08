@@ -5,14 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class UserRole extends Model
+class Category extends Model
 {
     use HasFactory;
-    protected $table = "user_roles";
     protected $fillable = [
-        'user_id',
-        'role_id',
+        "name",
+        "description",
     ];
 
-    public $timestamps = true;
+    public function products(){
+        return $this->hasMany(Product::class);
+    }
 }

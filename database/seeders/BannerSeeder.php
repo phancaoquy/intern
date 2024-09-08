@@ -18,10 +18,9 @@ class BannerSeeder extends Seeder
         foreach ($pages as $page) {
             Banner::create([
                 'page_id' => $page->id,
-                'banner_url' => fake()->url(), // Example URL
+                'banner_url' => fake()->url(),
                 'alt' => fake()->name(),
             ]);
         }
-
     }
 }
