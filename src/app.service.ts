@@ -1,6 +1,6 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Model } from 'mongoose';
+import mongoose, { Model } from 'mongoose';
 import { User } from './users/schemas/user.schema';
 import { Banner } from './banners/schemas/banner.schemas';
 import { Product } from './products/schemas/product.schema';
@@ -51,10 +51,18 @@ export class AppService {
   }
 
   findAllProducts() {
-    return this.productModel.find({ isActive: true });
+    return this.productModel.find({ isActive: true })
+        .sort({ createdAt: -1 })
+        .limit(20);
   }
 
-  findProductById(id: string) {
-    return this.productModel.findById(id);
+  async findProductById(id: string) {
+   const product = await this.productModel.findById(id);
+    if (!product) {
+      throw new NotFoundException('Product not found');
+    }
+   const relatedProducts = await this.productModel.find({ category: product.category }).limit(8);
+
+  return { product, relatedProducts };
   }
 }

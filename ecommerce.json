@@ -1,0 +1,26 @@
+{
+  "type": "Compass Connections",
+  "version": {
+    "$numberInt": "1"
+  },
+  "connections": [
+    {
+      "id": "fd1aa74b-7685-4e00-8b92-8f629d031850",
+      "lastUsed": {
+        "$date": {
+          "$numberLong": "1732847232921"
+        }
+      },
+      "favorite": {
+        "name": "Nestjs"
+      },
+      "savedConnectionType": "recent",
+      "connectionOptions": {
+        "connectionString": "mongodb://nestjs:Nest%40123456@localhost:27018/",
+        "oidc": {
+          "serializedState": "eyJvaWRjUGx1Z2luU3RhdGVWZXJzaW9uIjowLCJzdGF0ZSI6W119"
+        }
+      }
+    }
+  ]
+}

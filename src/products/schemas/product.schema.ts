@@ -1,6 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
-
+ 
 export enum ProductCategory {
   SHOES = 'shoes',
   CLOTHING = 'clothing',
@@ -19,7 +19,7 @@ export enum Brand {
 }
 
 
-@Schema({ timestamps: true })
+@Schema({ timestamps: true, toJSON: { virtuals: true }, toObject: { virtuals: true } })
 export class Product extends Document {
   @Prop({ required: true })
   name: string;
@@ -64,7 +64,7 @@ export class Product extends Document {
 
   @Prop({ type: [String] })
   colors: string[];
-
+  
   @Prop()
   createdAt: Date;
 
